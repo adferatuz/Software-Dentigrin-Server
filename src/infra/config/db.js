@@ -1,6 +1,12 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
+console.log('🔎 DEBUG - CONEXIÓN DB');
+console.log('HOST:', process.env.DB_HOST);
+console.log('PORT:', process.env.DB_PORT);
+console.log('DIALECT:', process.env.DB_DIALECT);
+
+
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
