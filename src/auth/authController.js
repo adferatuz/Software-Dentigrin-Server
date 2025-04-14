@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { SECRET_JWT_KEY } = require('@config/config.js');
 const userService = require('./userService');
 const jwt = require('jsonwebtoken');
