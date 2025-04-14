@@ -1,0 +1,44 @@
+{
+  "name": "dentigrin_backend",
+  "version": "1.0.0",
+  "description": "backend del proyecto dentigrin del SENA",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo # 4 de la ficha 2834902",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "_moduleAliases": {
+    "@auth": "src/auth",
+    "@controllers": "src/controllers",
+    "@middlewares": "src/middlewares",
+    "@routes": "src/routes",
+    "@domain": "src/domain",
+    "@infra": "src/infra",
+    "@config": "src/infra/config",
+    "@models": "src/domain/models",
+    "@services": "src/domain/services",
+    "@validations": "src/domain/validations",
+    "@repository": "src/domain/repository",
+    "@test": "test"
+  },
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
+}
