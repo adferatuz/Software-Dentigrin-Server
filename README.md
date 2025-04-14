@@ -40,6 +40,7 @@ Dentigrin es una solución integral para la administración de clínicas odontol
     ✨ "jsonwebtoken": "^9.0.2"</br>
     ✨ "cookie-parser": "^1.4.7"</br>
     ✨ "cors": "^2.8.5"</br>
+    ✨ "dotenv": "16.4.5"</br>
         
 
     <h4>Dependencias de desarrollo:</h4>
