@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
 console.log('🔎 DEBUG - CONEXIÓN DB');
