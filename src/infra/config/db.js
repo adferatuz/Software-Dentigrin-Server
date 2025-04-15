@@ -1,11 +1,15 @@
-//require('dotenv').config();
+// Solo cargar dotenv en desarrollo
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const { Sequelize } = require('sequelize');
 
-console.log('🔎 DEBUG - CONEXIÓN DB');
-console.log('HOST:', process.env.DB_HOST);
-console.log('PORT:', process.env.DB_PORT);
-console.log('DIALECT:', process.env.DB_DIALECT);
-
+// Debug opcional para verificar que sí llegan las variables
+console.log('📡 DB CONNECT INFO');
+console.log('Host:', process.env.DB_HOST);
+console.log('Port:', process.env.DB_PORT);
+console.log('Dialect:', process.env.DB_DIALECT);
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -13,8 +17,8 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT || 'postgres',
     port: process.env.DB_PORT,
+    dialect: process.env.DB_DIALECT,
     dialectOptions: {
       ssl: {
         require: true,
