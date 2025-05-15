@@ -17,7 +17,7 @@ const config = {
       if (ACCEPTED_ORIGINS.includes(origin)) {
         return callback(null, origin);
       }
-      if (!origin) {
+      if (!origin && process.env.NODE_ENV !== 'production') {
         return callback(null, true);
       }
       return callback(new Error('Not allowed by CORS'));
