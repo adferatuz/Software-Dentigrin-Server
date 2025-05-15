@@ -5,11 +5,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 const { Sequelize } = require('sequelize');
 
-let sequelize;
+//let sequelize;
 
 if (process.env.NODE_ENV === 'production') {
   // Configuración para entorno de producción usando variables de entorno
-  sequelize = new Sequelize(
+  const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
