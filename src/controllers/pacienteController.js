@@ -3,9 +3,9 @@ const pacienteService = require('@services/pacienteService');
 //Obtener todos los pacientes
 exports.getPacientes = async (req, res) => {
   try {
-    const {user} = req.session;
+    const { user } = req.session;
 
-    if(user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
+    if (user.rol !== 'admin') return res.status(403).send('Acceso no autorizado');
 
     //Llamada al servicio para crear un nuevo paciente
     const pacientes = await pacienteService.getPacientes();
@@ -24,22 +24,24 @@ exports.getPacientes = async (req, res) => {
 
 // Obtener un paciente por ID
 exports.getPacienteById = async (req, res) => {
-  try {
 
-    const {user} = req.session;
+  const { user } = req.session;
 
-    if(!user) return res.status(403).send('Acceso no autorizado');
+  if (!user) return res.status(403).send('Acceso no autorizado');
 
-    //Llamada al servicio para buscar un paciente por id.
-    const paciente = await pacienteService.getPacienteById(req.params.id);
-    if (paciente) {
-      res.json(paciente);
-    } else {
-      res.status(404).json({ message: 'Paciente no encontrado' });
+  //Llamada al servicio para buscar un paciente por id.
+  const paciente = await pacienteService.getPacienteById(req.params.id);
+  //console.log(`Este es el valor del mensaje del paciente si entro al if en el controlador: ${JSON.stringify(paciente)}`);
+
+  if (paciente['success'] === true) {
+    paciente['statusCode'] = res.status(200).statusCode;
+    paciente['message'] = `Hola que gusto es verte de nuevo ${paciente['data'].nombre} ${paciente['data'].apellido}`;
+    return res.status(paciente.statusCode).json(paciente);
+  } else {
+    if (paciente.errorType === 'Valor de la consulta nula') {
+      paciente['statusCode'] = res.status(500).statusCode;
+      return res.status(paciente.statusCode).json(paciente)
     }
-
-  } catch (error) {
-    res.status(500).json({ message: error.message });
   }
 };
 

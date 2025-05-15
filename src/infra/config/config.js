@@ -1,4 +1,7 @@
-//require('dotenv').config();
+// Cargar dotenv solo si no es producción
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const config = {
   PORT: process.env.PORT,

@@ -1,5 +1,6 @@
 const pacienteRepository = require('@repository/pacienteRepository');
 
+
 //Servicio para crear una persistencia de datos del ORM Paciente.
 exports.createPaciente = async (data) => {
     try {
@@ -28,15 +29,25 @@ exports.getPacientes = async () => {
 //Servicio para buscar un paciente por id.
 exports.getPacienteById = async (id) => {
     try {
-
+        
         //Llamada al repositorio para buscar un paciente por id.
         const paciente = await pacienteRepository.getPaciente(id);
-
-        // Si el paciente existe, se devuelve el paciente.
-        return paciente;
-
+        if (paciente.success === true) {
+            paciente['message'] = `Hola que gusto es verte de nuevo ${paciente['data'].nombre} ${paciente['data'].apellido}`;
+            return paciente;                
+            
+        }else {
+            return {
+                message: paciente['message'],
+                statusCode: 0,
+                error: paciente['error'],
+                success: paciente.success,
+                data: paciente.data,
+                errorType : paciente.errorType
+            };
+        }
     } catch (error) {
-        throw new Error(`Error al encontrar el paciente: ${error.message}`);
+        console.log(`error desde el servicio: ${error}`);
     }
 }
 
