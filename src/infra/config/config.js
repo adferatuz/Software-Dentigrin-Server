@@ -10,7 +10,7 @@ const config = {
   CORS_OPTIONS: {
     origin: (origin, callback) => {
       const ACCEPTED_ORIGINS = [
-        process.env.ALLOWED_ORIGIN, // production
+        process.env.ALLOWED_ORIGIN || 'https://software-dentigrin.vercel.app', // production
         process.env.ALLOWED_ORIGIN_DEV // development
       ];
 
