@@ -7,7 +7,7 @@ const { Sequelize } = require('sequelize');
 
 //let sequelize;
 
-if (process.env.NODE_ENV === 'production') {
+//if (process.env.NODE_ENV === 'production') {
   // Configuración para entorno de producción usando variables de entorno
   const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
       logging: false,
     }
   );
- } //else {
+ //} //else {
 //   // Configuración para desarrollo usando config.json
 //   const config = require('../config/config.json')[process.env.NODE_ENV || 'development'];
 //   sequelize = new Sequelize(
